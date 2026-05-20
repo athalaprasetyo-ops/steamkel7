@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+  <title>Meet the Chromosomes</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto Slab';
+    }
+
+
+    body{
+      background: linear-gradient(to bottom, #02123f, #071b63);
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    .container{
+      width:1400px;
+      height:800px;
+      background:#f6f8ff;
+      border-radius:25px;
+      overflow:hidden;
+      border:4px solid #0c2c86;
+      position:relative;
+    }
+
+    /* HEADER */
+    .header{
+      background:#03154d;
+      height:80px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 30px;
+      color:white;
+    }
+
+    .logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:white;
+    font-weight:bold;
+    font-size:22px;
+}
+
+.logo-circle{
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+    background:white;
+
+    color:#79b5e2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+    .stage{
+      background:#4e68ff;
+      padding:10px 25px;
+      border-radius:30px;
+      font-weight:bold;
+    }
+
+    .title{
+      font-size:35px;
+      font-weight:bold;
+    }
+
+    .progress{
+      border:2px solid white;
+      padding:10px 20px;
+      border-radius:15px;
+      font-weight:bold;
+    }
+
+    /* MAIN */
+    .main{
+      display:flex;
+      height:calc(100% - 80px);
+      padding:20px;
+      gap:20px;
+    }
+
+    /* LEFT PANEL */
+    .left-panel{
+      width:25%;
+      background:white;
+      border-radius:20px;
+      border:2px solid #d7e3ff;
+      padding:20px;
+      position:relative;
+      padding-bottom:90px;
+    }
+
+    .left-panel h2{
+      color:#1d4fd8;
+      margin-bottom:20px;
+    }
+
+    .left-panel p{
+      margin-bottom:18px;
+      line-height:1.5;
+      color:#333;
+    }
+
+    .funfact{
+      background:#eef5ff;
+      border:2px solid #c8ddff;
+      border-radius:15px;
+      padding:15px;
+      margin-top:20px;
+    }
+
+    .funfact h3{
+      color:#1d4fd8;
+      margin-bottom:10px;
+    }
+
+    .girl{
+      position:absolute;
+      bottom:20px;
+      left:15px;
+      width:120px;
+    }
+
+    .speech{
+      position:absolute;
+      bottom:80px;
+      left:120px;
+      background:white;
+      border-radius:15px;
+      padding:10px;
+      width:140px;
+      font-size:14px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* CENTER */
+    .content{
+      flex:1;
+      background:white;
+      border-radius:20px;
+      border:2px solid #d7e3ff;
+      padding:20px;
+      position:relative;
+      padding-bottom:100px;
+    }
+
+    .content h1{
+      text-align:center;
+      color:#1d4fd8;
+      margin-bottom:10px;
+      font-size:38px;
+    }
+
+    .subtitle{
+      text-align:center;
+      margin-bottom:20px;
+      color:#555;
+    }
+
+    .zoom-layout{
+      display:flex;
+      gap:20px;
+      height:85%;
+    }
+
+    /* SIDE ICON */
+    .zoom-list{
+      width:120px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      align-items:center;
+    }
+
+    .zoom-item{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      color:#555;
+      font-weight:bold;
+    }
+
+    .circle{
+      width:75px;
+      height:75px;
+      border-radius:50%;
+      background:#f1f4ff;
+      border:3px solid #d7e3ff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .circle:hover{
+      transform:scale(1.08);
+      border-color:#4e68ff;
+    }
+
+    .circle img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* MAIN IMAGE */
+    .display-area{
+      flex:1;
+      background:#e8f2fe;
+      border-radius:20px;
+      border:2px solid #d7e3ff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .display-area img{
+      width:70%;
+      transition:0.5s;
+    }
+
+    /* RIGHT TEXT */
+    .info{
+      width:280px;
+      padding-top:40px;
+    }
+
+    .info h2{
+      color:#1d4fd8;
+      margin-bottom:15px;
+      font-size:32px;
+    }
+
+    .info p{
+      line-height:1.6;
+      color:#444;
+      margin-bottom:15px;
+    }
+
+    /* BOT */
+    .robot{
+      position:absolute;
+      bottom:20px;
+      right:20px;
+      width:120px;
+    }
+
+    .next-btn{
+      position:absolute;
+      bottom:30px;
+      right:140px;
+      background:#3f63ff;
+      color:white;
+      border:none;
+      padding:18px 35px;
+      border-radius:15px;
+      font-size:20px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .next-btn:hover{
+      background:#284cff;
+    }
+
+    .button-group{
+  position:absolute;
+  bottom:30px;
+  right:40px;
+  display:flex;
+  gap:15px;
+    }
+
+.next-btn,
+.back-btn2{
+  border:none;
+  padding:16px 30px;
+  border-radius:15px;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.next-btn{
+  background:#3f63ff;
+}
+
+.back-btn2{
+  background:#dbe4ff;
+}
+
+.next-btn:hover{
+  background:#284cff;
+}
+
+.back-btn2:hover{
+  background:#c8d6ff;
+}
+
+/* TEXT PUTIH */
+.next-btn a{
+  color:white;
+  text-decoration:none;
+}
+
+.back-btn2 a{
+  color:#1d4fd8;
+  text-decoration:none;
+}
+
+    /* FOOTER */
+    .footer{
+      position:absolute;
+      bottom:10px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:10px;
+    }
+
+    .dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:#cbd5e1;
+    }
+
+    .active{
+      background:#4e68ff;
+      width:28px;
+      border-radius:20px;
+    }
+
+        .zoom-buttons{
+  position:absolute;
+  top:20px;
+  right:20px;
+  display:flex;
+  gap:10px;
+  z-index:10;
+}
+
+.zoom-buttons button{
+  width:45px;
+  height:45px;
+  border:none;
+  border-radius:12px;
+  background:#4e68ff;
+  color:white;
+  font-size:24px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.zoom-buttons button:hover{
+  background:#284cff;
+}
+
+/* BACK BUTTON LEFT */
+
+.back-stage-btn{
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  border:none;
+  background:#dce8ff;
+  padding:14px 22px;
+  border-radius:14px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.back-stage-btn:hover{
+  background:#c6d9ff;
+}
+
+.back-stage-btn a{
+  text-decoration:none;
+  color:#1d4fd8;
+  font-weight:bold;
+  font-size:16px;
+}
+
+/* NEXT BUTTON RIGHT */
+
+.next-btn{
+  position:absolute;
+  bottom:25px;
+  right:25px;
+  background:#3f63ff;
+  border:none;
+  padding:16px 32px;
+  border-radius:16px;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 6px 15px rgba(63,99,255,0.25);
+}
+
+.next-btn:hover{
+  background:#284cff;
+  transform:translateY(-2px);
+}
+
+.next-btn a{
+  color:white;
+  text-decoration:none;
+  font-size:18px;
+  font-weight:bold;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+
+      <div class="logo">
+
+        <div class="logo-circle">
+            <div style="height: 100%;">
+                <img src="logo.png"
+                alt="Logo unreveal.bio"
+                style="width:100%; border-radius: 50%;">
+            </div>
+        </div>
+
+        unreveal.bio
+
+    </div>
+
+      <div class="stage">STAGE 2</div>
+
+      <div class="title">Meet the Chromosomes</div>
+
+      <div class="progress">2 / 5</div>
+
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+      <!-- LEFT -->
+      <div class="left-panel" id="materi-sel" style="display: block;">
+
+        <h2>MATERI</h2>
+
+        <p>
+          Sel adalah unit terkecil penyusun makhluk hidup.
+        </p>
+
+        <p>
+          Sel memiliki bagian penting seperti membran sel, sitoplasma, dan inti sel.
+        </p>
+
+        <p>
+          Sel bekerja membentuk jaringan, organ, dan sistem organ pada tubuh manusia.
+        </p>
+        <div class="funfact">
+          <h3>⭐ FUN FACT!</h3>
+          <p>
+            Tubuh manusia memiliki lebih dari
+            37 triliun sel yang terus bekerja setiap hari!
+          </p>
+        </div>
+
+        <img class="girl"
+          src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+
+        <div class="speech">
+          Yuk, zoom untuk melihat lebih dalam!
+        </div>
+
+        <button class="back-stage-btn">
+        <a href="stage1.html">⬅ KEMBALI</a>
+        </button>
+
+      </div>
+      <div class="left-panel" id="materi-intisel" style="display: none;">
+
+        <h2>MATERI</h2>
+
+        <p>
+          Inti sel atau nukleus berfungsi sebagai pusat pengendali aktivitas sel.
+        </p>
+
+        <p>
+        Di dalam inti sel terdapat DNA yang menyimpan informasi genetik makhluk hidup.
+      </p>
+
+      <p>
+        Inti sel juga mengatur pertumbuhan, perkembangan, dan pembelahan sel.
+      </p>
+
+        <div class="funfact">
+          <h3>⭐ FUN FACT!</h3>
+      <p>
+        Jika DNA di dalam satu inti sel manusia
+        dibentangkan, panjangnya bisa mencapai
+        sekitar 2 meter!
+      </p>
+        </div>
+
+        <img class="girl"
+          src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+
+        <div class="speech">
+          Yuk, zoom untuk melihat lebih dalam!
+        </div>
+
+      </div>
+      <div class="left-panel" id="materi-dna" style="display: none;">
+
+        <h2>MATERI</h2>
+
+      <p>
+          DNA adalah materi genetik di dalam inti sel
+          yang menyimpan informasi sifat makhluk hidup.
+      </p>
+
+      <p>
+          DNA berfungsi mengatur pertumbuhan,
+         perkembangan, dan pewarisan sifat.
+      </p>
+
+        <div class="funfact">
+          <h3>⭐ FUN FACT!</h3>
+      <p>
+          Sekitar 99,9% DNA manusia ternyata
+          sama satu sama lain, meskipun setiap
+          orang memiliki ciri yang berbeda!
+      </p>
+        </div>
+
+        <img class="girl"
+          src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+
+        <div class="speech">
+          Yuk, zoom untuk melihat lebih dalam!
+        </div>
+
+      </div>
+      <div class="left-panel" id="materi-kromosom" style="display: none;">
+
+        <h2>MATERI</h2>
+
+        <p>
+          Kromosom adalah struktur berbentuk benang yang terdapat di dalam inti sel.
+        </p>
+
+        <p>
+          Kromosom membawa informasi genetik (DNA) yang menentukan sifat pada manusia.
+        </p>
+
+        <p>
+          Manusia memiliki 46 kromosom atau 23 pasang kromosom.
+        </p>
+
+        <div class="funfact">
+          <h3>⭐ FUN FACT!</h3>
+          <p>
+            Jika direntangkan, DNA dalam satu sel bisa sepanjang 2 meter!
+          </p>
+        </div>
+
+        <img class="girl"
+          src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+
+        <div class="speech">
+          Yuk, zoom untuk melihat lebih dalam!
+        </div>
+
+      </div>
+
+      <!-- CONTENT -->
+      <div class="content">
+
+        <h1>YUK BELAJAR!</h1>
+
+        <div class="subtitle">
+          Klik tombol zoom untuk melihat dari yang paling besar ke paling kecil!
+        </div>
+
+        <div class="zoom-layout">
+
+          <!-- ICON LIST -->
+            <div class="zoom-list">
+
+                <div class="zoom-item">
+                    <div class="circle" onclick="changeImage1()">
+                        <img src="b1sel.jpeg">
+                    </div>
+                SEL
+                </div>
+
+                <div class="zoom-item">
+                    <div class="circle" onclick="changeImage2()">
+                        <img src="b2intisel.jpeg">
+                    </div>
+                INTI SEL
+                </div>
+
+                <div class="zoom-item">
+                    <div class="circle" onclick="changeImage3()">
+                        <img src="b2dna.jpeg">
+                    </div>
+                DNA
+                </div>
+
+                <div class="zoom-item">
+                    <div class="circle" onclick="changeImage4()">
+                        <img src="b3kromosom.jpeg">
+                    </div>
+                KROMOSOM
+                </div>
+
+            </div>
+
+          <!-- IMAGE -->
+            <div class="display-area">
+
+                <div class="zoom-buttons">
+                    <button onclick="zoomIn()">+</button>
+                    <button onclick="zoomOut()">-</button>
+                </div>
+
+                <img id="mainImage1" style="display: block;" src="b1sel.jpeg">
+                <img id="mainImage2" style="display: none;" src="b2intisel.jpeg">
+                <img id="mainImage3" style="display: none;" src="b2dna.jpeg">
+                <img id="mainImage4" style="display: none;" src="b3kromosom.jpeg">
+        
+
+            </div>
+
+          <!-- INFO -->
+            <div class="info" id="judul-sel" style="display: block;">
+
+                <h2 id="titleInfo">SEL</h2>
+
+                <p id="descInfo">
+                Sel adalah unit terkecil penyusun makhluk hidup.
+                </p>
+
+                <p>
+                Di dalam sel terdapat inti sel yang menyimpan kromosom.
+                </p>
+
+            </div>
+            <div class="info" id="judul-intisel" style="display: none;">
+
+                <h2 id="titleInfo">INTISEL</h2>
+
+                <p id="descInfo">
+                Bagian sel yang mengatur aktivitas sel dan menjadi tempat penyimpanan kromosom
+                </p>
+
+            </div>
+            <div class="info" id="judul-dna" style="display: none;">
+
+                <h2 id="titleInfo">DNA</h2>
+
+                <p id="descInfo">
+                 Materi genetik yang membawa informasi tentang sifat makhluk hidup.
+                </p>
+
+            </div>
+            <div class="info" id="judul-kromosom" style="display: none;">
+
+                <h2 id="titleInfo">KROMOSOM</h2>
+
+                <p id="descInfo">
+               Struktur berbentuk benang di dalam inti sel yang membawa informasi genetik dari orang tua kepada anak. 
+                </p>
+
+            </div>
+
+            </div>
+
+       <div class="button-group">
+
+      <button class="next-btn">
+      <a href="stage3.html">LANJUT →</a>
+</button>
+      </div>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <script>
+
+      
+      function changeImage1(){
+          document.getElementById("mainImage1").style.display = "block";
+          document.getElementById("mainImage2").style.display = "none";
+          document.getElementById("mainImage3").style.display = "none";
+          document.getElementById("mainImage4").style.display = "none";
+
+                document.getElementById("materi-sel").style.display = "block";
+            document.getElementById("materi-intisel").style.display = "none";
+            document.getElementById("materi-dna").style.display = "none";
+            document.getElementById("materi-kromosom").style.display = "none";
+
+            document.getElementById("judul-sel").style.display = "block";
+            document.getElementById("judul-intisel").style.display = "none";
+            document.getElementById("judul-dna").style.display = "none";
+            document.getElementById("judul-kromosom").style.display = "none";
+
+        }
+        
+        function changeImage2(){
+            document.getElementById("mainImage1").style.display = "none";
+      document.getElementById("mainImage2").style.display = "block";
+      document.getElementById("mainImage3").style.display = "none";
+      document.getElementById("mainImage4").style.display = "none";
+
+      document.getElementById("materi-sel").style.display = "none";
+      document.getElementById("materi-intisel").style.display = "block";
+      document.getElementById("materi-dna").style.display = "none";
+      document.getElementById("materi-kromosom").style.display = "none";
+
+       document.getElementById("judul-sel").style.display = "none";
+      document.getElementById("judul-intisel").style.display = "block";
+      document.getElementById("judul-dna").style.display = "none";
+      document.getElementById("judul-kromosom").style.display = "none";
+    }
+
+    function changeImage3(){
+      document.getElementById("mainImage1").style.display = "none";
+      document.getElementById("mainImage2").style.display = "none";
+      document.getElementById("mainImage3").style.display = "block";
+      document.getElementById("mainImage4").style.display = "none";
+
+      document.getElementById("materi-sel").style.display = "none";
+      document.getElementById("materi-intisel").style.display = "none";
+      document.getElementById("materi-dna").style.display = "block";
+      document.getElementById("materi-kromosom").style.display = "none";
+
+      document.getElementById("judul-sel").style.display = "none";
+      document.getElementById("judul-intisel").style.display = "none";
+      document.getElementById("judul-dna").style.display = "block";
+      document.getElementById("judul-kromosom").style.display = "none";
+    }
+
+    function changeImage4(){
+      document.getElementById("mainImage1").style.display = "none";
+      document.getElementById("mainImage2").style.display = "none";
+      document.getElementById("mainImage3").style.display = "none";
+      document.getElementById("mainImage4").style.display = "block";
+
+      document.getElementById("materi-sel").style.display = "none";
+      document.getElementById("materi-intisel").style.display = "none";
+      document.getElementById("materi-dna").style.display = "none";
+      document.getElementById("materi-kromosom").style.display = "block";
+
+       document.getElementById("judul-sel").style.display = "none";
+      document.getElementById("judul-intisel").style.display = "none";
+      document.getElementById("judul-dna").style.display = "none";
+      document.getElementById("judul-kromosom").style.display = "block";
+      resetZoom();
+    }
+
+    let zoomLevel = 1;
+
+    function resetZoom() {
+      zoomLevel = 1;
+      const visibleImage = document.querySelector('.display-area img[style*="display: block"]');
+      if (visibleImage) {
+        visibleImage.style.transform = `scale(${zoomLevel})`;
+      }
+    }
+
+    function zoomIn() {
+      const visibleImage = document.querySelector('.display-area img[style*="display: block"]');
+      if (!visibleImage) return;
+      zoomLevel += 0.2;
+      visibleImage.style.transform = `scale(${zoomLevel})`;
+    }
+
+    function zoomOut() {
+      const visibleImage = document.querySelector('.display-area img[style*="display: block"]');
+      if (!visibleImage) return;
+      if (zoomLevel > 0.4) {
+        zoomLevel -= 0.2;
+        visibleImage.style.transform = `scale(${zoomLevel})`;
+      }
+    }
+  </script>
+
+</body>
+</html>
+

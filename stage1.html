@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+
+<title>Susun Kromosom</title>
+
+<style>
+
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto Slab', 'Google Sans';
+    }
+
+body{
+    background:#05082d;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top left,#31115e,transparent 30%),
+    radial-gradient(circle at bottom right,#0a2a6b,transparent 30%);
+    z-index:-1;
+}
+
+/* HEADER */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 30px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:white;
+    font-weight:bold;
+    font-size:22px;
+}
+
+.logo-circle{
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+    background:white;
+
+    color:#79b5e2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.title{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.stage{
+    background:#b43cff;
+    padding:7px 16px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.title h1{
+    font-size:30px;
+}
+
+.progress{
+    border:2px solid #2f3c89;
+    padding:10px 18px;
+    border-radius:15px;
+}
+
+/* LAYOUT */
+
+.container{
+    display:flex;
+    gap:20px;
+    padding:0 25px 25px;
+    height:calc(100vh - 90px);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:290px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.card{
+    background:#09143f;
+    border:2px solid #223d8f;
+    border-radius:18px;
+    padding:20px;
+}
+
+.card h3{
+    color:#5cb3ff;
+    margin-bottom:15px;
+}
+
+.card p{
+    line-height:1.5;
+    margin-bottom:15px;
+    color:#d7e0ff;
+}
+
+.card ul{
+    margin-left:18px;
+    line-height:1.8;
+}
+
+.character{
+    display:flex;
+    justify-content:center;
+    margin-top:15px;
+    font-size:70px;
+}
+
+.fact{
+    background:#111f55;
+}
+
+.back-btn{
+    margin-top:auto;
+    background:#101a4a;
+    border:2px solid #2a4ca2;
+    color:white;
+    padding:14px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+/* GAME AREA */
+
+.game-area{
+    flex:1;
+    background:#071137;
+    border:2px solid #1c3478;
+    border-radius:20px;
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.game-title{
+    color:#5cb3ff;
+    font-size:32px;
+    font-weight:bold;
+}
+
+.subtitle{
+    margin-top:10px;
+    color:#d0d8ff;
+}
+
+/* DRAG ITEMS */
+
+.chromosomes{
+    display:flex;
+    gap:30px;
+    margin-top:35px;
+}
+
+.chromosome{
+    width:90px;
+    height:120px;
+    border:2px dashed #4457a6;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:90px;
+    font-weight:bold;
+    cursor:grab;
+    user-select:none;
+}
+
+.pink{
+    color:#ff72b7;
+}
+
+.blue{
+    color:#ffffff;
+}
+
+/* DROP ZONES */
+
+.drop-container{
+    display:flex;
+    gap:70px;
+    margin-top:40px;
+}
+
+.group{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.drop-zone{
+    display:flex;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.slot{
+    width:120px;
+    height:140px;
+    border:2px dashed #5d6dc7;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:90px;
+}
+
+.girl .slot{
+    background:rgba(255,100,180,0.08);
+}
+
+.boy .slot{
+    background:rgba(80,140,255,0.08);
+}
+
+.label{
+    padding:10px 20px;
+    border-radius:12px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.girl .label{
+    background:#d94a9a;
+}
+
+.boy .label{
+    background:#3475d9;
+}
+
+.avatar{
+    font-size:50px;
+}
+
+/* BUTTON */
+
+.check-btn{
+    margin-top:35px;
+    background:#7f5cff;
+    border:none;
+    color:white;
+    padding:16px 35px;
+    border-radius:15px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.check-btn:hover{
+    transform:scale(1.05);
+}
+
+/* RESULT */
+
+.result{
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* NEXT BUTTON */
+
+.next-btn{
+    margin-top:15px;
+    background:#24c768;
+    border:none;
+    color:white;
+    padding:16px 34px;
+    border-radius:15px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.2s;
+    display:none;
+    box-shadow:0 0 15px rgba(36,199,104,0.5);
+}
+
+.next-btn:hover{
+    transform:scale(1.05);
+}
+
+.next-btn a{
+    color:white;
+    text-decoration:none;
+}
+
+.result{
+    margin-top:25px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+
+<audio id="correctSound">
+    <source src="yes.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="wrongSound">
+    <source src="no.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            <div style="height: 100%;">
+                <img src="logo.png"
+                alt="Logo unreveal.bio"
+                style="width:100%; border-radius: 50%;">
+            </div>
+        </div>
+
+        unreveal.bio
+
+    </div>
+
+    <div class="title">
+        <div class="stage">STAGE 1</div>
+        <h1>Why Are There Boys & Girls?</h1>
+    </div>
+
+    <div class="progress">1 / 5</div>
+
+</div>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="card">
+
+            <h3>MATERI</h3>
+
+            <p>
+                Manusia memiliki dua jenis kelamin biologis:
+                laki-laki dan perempuan.
+            </p>
+
+            <p>
+                Jenis kelamin ditentukan oleh kromosom:
+            </p>
+
+            <ul>
+                <li>Perempuan memiliki kromosom XX</li>
+                <li>Laki-laki memiliki kromosom XY</li>
+            </ul>
+
+            <div class="character">
+                👧 👦
+            </div>
+
+        </div>
+
+        <div class="card fact">
+
+            <h3>💡 Tahukah kamu?</h3>
+
+            <p>
+                Kombinasi kromosom dari orang tua
+                menentukan jenis kelamin bayi!
+            </p>
+
+        </div>
+
+        <button class="back-btn" onclick="goBack()">
+            ⬅ KEMBALI
+        </button>
+
+    </div>
+
+    <!-- GAME -->
+
+    <div class="game-area">
+
+        <div class="game-title">
+            GAME: SUSUN KROMOSOM
+        </div>
+
+        <div class="subtitle">
+            Drag & drop potongan kromosom ke tempat yang benar!
+        </div>
+
+        <!-- CHROMOSOMES -->
+
+        <div class="chromosomes">
+
+            <div class="chromosome blue"
+                draggable="true"
+                id="y1">
+                Y
+            </div>
+
+            <div class="chromosome blue"
+                draggable="true"
+                id="x1">
+                X
+            </div>
+
+            <div class="chromosome blue"
+                draggable="true"
+                id="x2">
+                X
+            </div>
+
+            <div class="chromosome blue"
+                draggable="true"
+                id="x3">
+                X
+            </div>
+
+        </div>
+
+        <!-- DROP AREAS -->
+
+        <div class="drop-container">
+
+            <!-- GIRL -->
+
+            <div class="group girl">
+
+                <div class="drop-zone">
+
+                    <div class="slot"
+                        data-accept="X"></div>
+
+                    <div class="slot"
+                        data-accept="X"></div>
+
+                </div>
+
+                <div class="label">
+                    PEREMPUAN
+                </div>
+
+                <div class="avatar">
+                    👧
+                </div>
+
+            </div>
+
+            <!-- BOY -->
+
+            <div class="group boy">
+
+                <div class="drop-zone">
+
+                    <div class="slot"
+                        data-accept="X"></div>
+
+                    <div class="slot"
+                        data-accept="Y"></div>
+
+                </div>
+
+                <div class="label">
+                    LAKI-LAKI
+                </div>
+
+                <div class="avatar">
+                    👦
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <button class="check-btn"
+            onclick="checkAnswer()">
+
+            CEK JAWABAN
+
+        </button>
+
+        <button class="next-btn"
+            id="nextBtn">
+
+            <a href="stage2.html">
+                LANJUT ➜
+            </a>
+
+        </button>
+
+        <div class="result"
+            id="result"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+const chromosomes =
+    document.querySelectorAll(".chromosome");
+
+const slots =
+    document.querySelectorAll(".slot");
+
+/* DRAG */
+
+chromosomes.forEach(chromo => {
+
+    chromo.addEventListener("dragstart", e => {
+
+        e.dataTransfer.setData(
+            "text",
+            chromo.id
+        );
+
+    });
+
+});
+
+/* DROP */
+
+slots.forEach(slot => {
+
+    slot.addEventListener("dragover", e => {
+
+        e.preventDefault();
+
+    });
+
+    slot.addEventListener("drop", e => {
+
+        e.preventDefault();
+
+        const id =
+            e.dataTransfer.getData("text");
+
+        const dragged =
+            document.getElementById(id);
+
+        // supaya slot cuma bisa isi 1
+
+        if(slot.children.length === 0){
+
+            slot.appendChild(dragged);
+
+        }
+
+    });
+
+});
+
+/* CHECK ANSWER */
+
+function checkAnswer(){
+
+    const result =
+        document.getElementById("result");
+
+    const nextBtn =
+        document.getElementById("nextBtn");
+
+    const correctSound =
+        document.getElementById("correctSound");
+
+    const wrongSound =
+        document.getElementById("wrongSound");
+
+    const allSlots =
+        document.querySelectorAll(".slot");
+
+    let correct = true;
+
+    allSlots.forEach(slot => {
+
+        const accept =
+            slot.dataset.accept;
+
+        if(slot.children.length === 0){
+
+            correct = false;
+            return;
+
+        }
+
+        const text =
+            slot.children[0].innerText;
+
+        if(text !== accept){
+
+            correct = false;
+
+        }
+
+    });
+
+    if(correct){
+
+        result.innerHTML =
+            "🎉 Jawaban Benar!";
+
+        result.style.color =
+            "#6dff92";
+
+        // putar audio benar
+
+        correctSound.currentTime = 0;
+        correctSound.play();
+
+        // tampilkan tombol lanjut
+
+        nextBtn.style.display =
+            "inline-block";
+
+    }
+
+    else{
+
+        result.innerHTML =
+            "❌ Masih ada yang salah!";
+
+        result.style.color =
+            "#ff7070";
+
+        // putar audio salah
+
+        wrongSound.currentTime = 0;
+        wrongSound.play();
+
+        // sembunyikan tombol lanjut
+
+        nextBtn.style.display =
+            "none";
+
+    }
+
+}
+
+/* BACK BUTTON */
+
+function goBack(){
+
+    window.location.href =
+        "pretest.html";
+
+}
+
+</script>
+
+</body>
+</html>

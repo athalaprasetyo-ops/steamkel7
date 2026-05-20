@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+  <title>Unreveal.Bio</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Roboto Slab','Google Sans',Arial,sans-serif;
+    }
+
+    body{
+      background-color:white;
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      height: 75px;
+      background-color: #78b9e8;
+      display: flex;
+      align-items: center;
+      padding: 0 50px 0 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-right: 900px;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-left: 15px;
+    }
+
+    .brand span {
+      font-size: 20px;
+      color: black;
+    }
+
+    .login {
+      width: 215px;
+      height: 46px;
+      background-color: #c6dff5;
+      text-align: center;
+      align-content: center;
+      border-radius: 10px;
+      margin: 0 10px;
+      font-size: large;
+      text-decoration: none;
+      color: black;
+      font-family: 'Roboto Slab', Arial, sans-serif;
+    }
+    .login:hover {
+      background-color: #86f980;
+      transition-duration: 1000ms;
+      /* color: white; */
+
+    }
+
+.h1hero{
+    font-size:64px;
+    color:white;
+
+    /* OUTLINE */
+    -webkit-text-stroke:2px #1d4f73;
+
+    /* SHADOW */
+    text-shadow:
+    3px 3px 8px rgba(0,0,0,0.35);
+}
+
+/* SUBTITLE */
+.h3hero{
+    font-size:32px;
+    color:white;
+
+    -webkit-text-stroke:1px #1d4f73;
+
+    text-shadow:
+    2px 2px 6px rgba(0,0,0,0.3);
+}
+
+/* PARAGRAPH */
+.phero{
+    font-size:20px;
+    color:white;
+
+    -webkit-text-stroke:0.5px #1d4f73;
+
+    text-shadow:
+    2px 2px 5px rgba(0,0,0,0.25);
+}
+
+    /* HERO */
+
+   .hero1,
+.hero2,
+.hero3{
+  height:445px;
+  background-size:cover;
+  background-position:center;
+  padding:45px 64px;
+  transition:all 2s ease-in-out;
+}
+
+.hero1{
+  background-image:url("kromosom.png");
+}
+
+.hero2{
+  background-image:url("sel.png");
+}
+
+.hero3{
+  background-image:url("instisel.png");
+}
+
+.hero4{
+  background-image:url("dna.png");
+}
+
+    .h1hero{
+      color:#ffffff;
+      font-size:36px;
+      letter-spacing:2px;
+      margin-bottom:25px;
+      font-weight:bolder;
+    }
+
+    .h3hero{
+      font-size:22px;
+      font-style:italic;
+      margin-bottom:22px;
+    }
+
+    .phero{
+      width:530px;
+      font-size:21px;
+      line-height:1.25;
+      font-style:italic;
+      margin-bottom:40px;
+      word-spacing:18px;
+      text-align:justify;
+      letter-spacing:2px;
+    }
+
+    .pretest-btn{
+      width:200px;
+      height:53px;
+      background-color:#84f757;
+      border:none;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:20px;
+      font-size:23px;
+      cursor:pointer;
+      border:3px solid #586cff;
+      border-radius:10px;
+      text-decoration:none;
+      color:black;
+    }
+
+    .play-btn{
+      width:30px;
+      height:30px;
+      display:flex;
+      align-items:center;
+    }
+
+    /* SLIDER */
+
+    .slider-wrapper{
+      position:relative;
+      background-color:#78b9e8;
+      padding:25px 70px;
+      overflow:hidden;
+    }
+
+    .slider-container{
+      overflow-x:auto;
+      scroll-behavior:smooth;
+      scrollbar-width:none;
+    }
+
+    .slider-container::-webkit-scrollbar{
+      display:none;
+    }
+
+    .slider-track{
+      display:flex;
+      gap:25px;
+      width:max-content;
+    }
+
+    .card{
+      min-width:520px;
+      height:300px;
+      background-color:white;
+      border-radius:16px;
+      overflow:hidden;
+      flex-shrink:0;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .card:hover{
+      transform:scale(1.05);
+      box-shadow:0 8px 20px rgba(0,0,0,0.25);
+      transition:transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    }
+
+    .card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    /* ARROW BUTTONS */
+
+    .slider-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:55px;
+      height:55px;
+      border:none;
+      border-radius:50%;
+      background:white;
+      color:#3b6fa3;
+      font-size:32px;
+      cursor:pointer;
+      z-index:10;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .slider-btn:hover{
+      background:#dff1ff;
+    }
+
+    .prev{
+      left:10px;
+    }
+
+    .next{
+      right:10px;
+    }
+
+    /* FOOTER */
+
+    .footer-space{
+      height:5px;
+      background-color:white;
+    }
+
+    footer{
+      height:90px;
+      background-color:#78b9e8;
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      padding-right:40px;
+      font-size:20px;
+    }
+
+  </style>
+  
+
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+        <div class="brand">
+        <img src="logo.png" alt="Logo" class="logo" />
+        <span>unreveal.bio</span>
+        </div>
+
+        <a href="about.html" class="login">Tentang Kami</a>
+    </nav>
+
+  <!-- HERO -->
+
+  <section id="hero-banner" class="hero3">
+
+    <h1 class="h1hero">unreveal.bio</h1>
+
+    <p class="phero">
+      Belajar biologi dengan asik dan seru bersama unreveal.bio!
+    </p>
+
+    <a href="namamu.html" class="pretest-btn">
+
+      <span class="play-btn">
+        <svg xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 48 48">
+
+          <defs>
+            <mask id="SVGu4ff0bvt">
+              <g fill="none"
+                stroke-linejoin="round"
+                stroke-width="4">
+
+                <path fill="#fff"
+                  stroke="#fff"
+                  d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z"/>
+
+                <path fill="#000"
+                  stroke="#000"
+                  d="M20 24v-6.928l6 3.464L32 24l-6 3.464l-6 3.464z"/>
+              </g>
+            </mask>
+          </defs>
+
+          <path fill="currentColor"
+            d="M0 0h48v48H0z"
+            mask="url(#SVGu4ff0bvt)"/>
+
+        </svg>
+      </span>
+
+      <span style="letter-spacing:1px;">
+        Pre-Test
+      </span>
+
+    </a>
+
+  </section>
+
+  <!-- SLIDER -->
+
+  <section class="slider-wrapper">
+
+    <button class="slider-btn prev" onclick="scrollSlider(-1)">
+      &#10094;
+    </button>
+
+    <div class="slider-container" id="slider">
+
+<div class="slider-track">
+
+  <a href="asalusul.html" class="card-link">
+    <div class="card">
+      <img src="b1.jpeg" alt="Materi 1">
+    </div>
+  </a>
+
+  <a href="dna.html" class="card-link">
+    <div class="card">
+      <img src="b3.jpeg" alt="Materi 2">
+    </div>
+  </a>
+
+  <a href="sel.html" class="card-link">
+    <div class="card">
+      <img src="b2.jpeg" alt="Materi 3">
+    </div>
+  </a>
+
+  <a href="inti-sel.html" class="card-link">
+    <div class="card">
+      <img src="b4.jpeg" alt="Materi 4">
+    </div>
+  </a>
+
+</div>
+
+    </div>
+
+    <button class="slider-btn next" onclick="scrollSlider(1)">
+      &#10095;
+    </button>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <div class="footer-space"></div>
+
+  <footer>
+    unrevealed.bio
+  </footer>
+
+  <script>
+
+    function scrollSlider(direction){
+
+      const slider =
+        document.getElementById("slider");
+
+      const scrollAmount = 550;
+
+      slider.scrollBy({
+        left: direction * scrollAmount,
+        behavior: "smooth"
+      });
+
+    }
+
+    const banner = document.getElementById("hero-banner");
+
+/* daftar class */
+const heroes = ["hero1", "hero2", "hero3"];
+
+/* mulai dari hero3 karena HTML awal pakai hero3 */
+let current = 2;
+
+setInterval(() => {
+
+  /* hapus semua class hero */
+  banner.classList.remove("hero1", "hero2", "hero3", "hero4");
+
+  /* pindah ke class berikutnya */
+  current++;
+
+  /* balik lagi ke awal */
+  if(current >= heroes.length){
+    current = 0;
+  }
+
+  /* tambahkan class baru */
+  banner.classList.add(heroes[current]);
+
+}, 2000);
+  </script>
+
+</body>
+</html>

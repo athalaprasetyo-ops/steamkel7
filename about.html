@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+<title>Tentang Kami - unreveal.bio</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', 'Google Sans';
+}
+
+body{
+    background:#d9d9d9;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+.background{
+    position:fixed;
+    inset:0;
+
+    background:
+    linear-gradient(
+    rgba(255,255,255,0.45),
+    rgba(255,255,255,0.45)),
+    url("wow.png");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    z-index:-1;
+}
+
+/* NAVBAR */
+.navbar{
+    height:75px;
+    background-color:#78b9e8;
+    display:flex;
+    align-items:center;
+    padding:0 50px 0 0;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-right:900px;
+}
+
+.logo{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-left:15px;
+}
+
+.brand span{
+    font-size:20px;
+    color:black;
+}
+
+.login{
+    width:215px;
+    height:46px;
+    background-color:#c6dff5;
+    text-align:center;
+    align-content:center;
+    border-radius:10px;
+    margin:0 10px;
+    font-size:large;
+    text-decoration:none;
+    color:black;
+    font-family:'Roboto Slab', Arial, sans-serif;
+}
+
+.login:hover{
+    background-color:#86f980;
+    transition-duration:1000ms;
+}
+
+/* CONTENT */
+.container{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:30px 20px 40px;
+}
+
+/* TITLE BOX */
+.title-box{
+    background:#77bee2;
+    padding:35px 20px;
+    border-radius:18px;
+    text-align:center;
+    font-size:38px;
+    font-weight:bold;
+    margin-bottom:40px;
+    color:black;
+
+    opacity:0;
+    transform:translateY(-20px);
+    transition:1s;
+}
+
+/* IMAGE SECTION */
+.image-section{
+    display:flex;
+    gap:25px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom:35px;
+}
+
+.image-card{
+    width:320px;
+    height:230px;
+    border-radius:15px;
+    overflow:hidden;
+    background:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+.image-card:hover{
+    transform:scale(1.03);
+}
+
+.image-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* SUBTITLE */
+.subtitle-box{
+    background:#77bee2;
+    padding:28px 20px;
+    border-radius:15px;
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:35px;
+}
+
+/* TEXT */
+.description{
+    background:rgba(255,255,255,0.6);
+    padding:25px;
+    border-radius:15px;
+    line-height:1.8;
+    font-size:18px;
+    color:#222;
+    text-align:justify;
+}
+
+/* FOOTER */
+.footer{
+    margin-top:30px;
+    text-align:right;
+    font-size:14px;
+    color:#444;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .title-box{
+        font-size:28px;
+    }
+
+    .subtitle-box{
+        font-size:24px;
+    }
+
+    .image-card{
+        width:100%;
+        max-width:320px;
+    }
+
+    .description{
+        font-size:16px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="brand">
+        <img src="logo.png" alt="Logo" class="logo" />
+        <span>unreveal.bio</span>
+    </div>
+
+    <a href="index.html" class="login">
+        Back Home
+    </a>
+
+</nav>
+
+<!-- CONTENT -->
+
+<div class="container">
+
+    <!-- TITLE -->
+
+    <div class="title-box">
+        TENTANG KAMI
+    </div>
+
+    <!-- IMAGES -->
+
+    <div class="image-section">
+
+        <div class="image-card">
+            <img src="aboutus1 (1).jpeg">
+        </div>
+
+        <div class="image-card">
+            <img src="aboutus1 (2).jpeg">
+        </div>
+
+    </div>
+
+    <!-- SUBTITLE -->
+
+    <div class="subtitle-box">
+        BELAJAR BIOLOGI SERU DAN MUDAH!
+    </div>
+
+    <!-- DESCRIPTION -->
+
+    <div class="description">
+
+        Website ini dibuat sebagai bagian dari tugas proyek STEAM
+        (Science, Technology, Engineering, Arts, and Mathematics).
+        Kami percaya bahwa kehadiran unreveal.bio dapat membantu
+        mempermudah proses belajar mengenai biologi, khususnya topik
+        kromosom, dengan cara yang lebih interaktif, menarik, dan
+        mudah dipahami oleh pelajar.
+
+        <br><br>
+
+        Proyek ini dikembangkan oleh siswa-siswi SMA Avicenna Jagakarsa
+        yang memiliki semangat untuk menggabungkan ilmu pengetahuan
+        dengan teknologi digital. Melalui website ini, kami ingin
+        menghadirkan media pembelajaran yang tidak hanya informatif,
+        tetapi juga kreatif dan menyenangkan sehingga dapat
+        meningkatkan minat belajar biologi.
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+        unreveal.bio
+    </div>
+
+</div>
+
+<script>
+
+/* ANIMASI TITLE */
+
+const titleBox = document.querySelector(".title-box");
+
+window.addEventListener("load", () => {
+
+    titleBox.style.transform = "translateY(0px)";
+    titleBox.style.opacity = "1";
+
+});
+
+</script>
+
+</body>
+</html>

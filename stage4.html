@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+
+<title>Gender Determination Process</title>
+
+<style>
+
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto Slab', 'Google Sans';
+    }
+
+body{
+    background:#eaf5f8;
+    min-height:100vh;
+    color:#29415c;
+}
+
+/* HEADER */
+
+.header{
+    background:#10385d;
+    color:white;
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:white;
+    font-weight:bold;
+    font-size:22px;
+}
+
+.logo-circle{
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+    background:white;
+
+    color:#79b5e2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.center{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.stage{
+    background:#48b2b7;
+    padding:7px 15px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.center h1{
+    font-size:26px;
+}
+
+.progress{
+    border:2px solid #5fa8b2;
+    padding:8px 16px;
+    border-radius:14px;
+}
+
+/* LAYOUT */
+
+.container{
+    display:flex;
+    gap:20px;
+    padding:20px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:280px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.card{
+    background:white;
+    border:2px solid #c8dfe5;
+    border-radius:18px;
+    padding:18px;
+}
+
+.card h3{
+    color:#3e8791;
+    margin-bottom:15px;
+}
+
+.card p{
+    line-height:1.6;
+    margin-bottom:14px;
+}
+
+.chromosome-display{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:15px;
+    font-size:80px;
+}
+
+.note{
+    background:#dff5f7;
+}
+
+.back-btn{
+    margin-top:auto;
+    background:white;
+    border:2px solid #8cc6ce;
+    color:#32717a;
+    padding:14px;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.2s;
+}
+
+.back-btn:hover{
+    background:#dff5f7;
+}
+
+/* GAME AREA */
+
+.game{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.game-box{
+    background:white;
+    border:2px solid #cfe2e7;
+    border-radius:20px;
+    padding:25px;
+}
+
+.game-title{
+    text-align:center;
+    color:#3a7e88;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.subtitle{
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:25px;
+}
+
+/* QUESTION */
+
+.question{
+    border:2px solid #d7e8eb;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:25px;
+}
+
+.row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.circle{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:40px;
+    font-weight:bold;
+}
+
+.pink{
+    background:#ffd5e7;
+    color:#d84d8b;
+}
+
+.blue{
+    background:#d7e8ff;
+    color:#4b7fe3;
+}
+
+.green{
+    background:#d8f6d8;
+    color:#48a44f;
+}
+
+.operator{
+    font-size:40px;
+    font-weight:bold;
+}
+
+/* DROP ZONE */
+
+.drop-zone{
+    width:190px;
+    min-height:90px;
+    border:3px dashed #b7d1d8;
+    border-radius:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f8fdff;
+    padding:10px;
+}
+
+/* OPTIONS */
+
+.options-title{
+    text-align:center;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+
+.options{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.option{
+    width:180px;
+    padding:14px;
+    border-radius:14px;
+    text-align:center;
+    font-weight:bold;
+    cursor:grab;
+    user-select:none;
+}
+
+.option.pink-option{
+    background:#ffdce9;
+    color:#c64980;
+}
+
+.option.blue-option{
+    background:#dce9ff;
+    color:#3d72d9;
+}
+
+/* BUTTON */
+
+.button-wrap{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-top:10px;
+}
+
+.check-btn{
+    background:#4ca8b0;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.check-btn:hover{
+    opacity:0.9;
+}
+
+.next-btn{
+    display:none;
+    background:#55b96b;
+    color:white;
+    border:none;
+    padding:15px 32px;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.next-btn:hover{
+    transform:scale(1.05);
+}
+
+.next-btn a{
+    color:white;
+    text-decoration:none;
+}
+
+.result{
+    text-align:center;
+    margin-top:18px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+    <audio id="correctSound">
+    <source src="yes.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="wrongSound">
+    <source src="no.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            <div style="height: 100%;">
+                <img src="logo.png"
+                alt="Logo unreveal.bio"
+                style="width:100%; border-radius: 50%;">
+            </div>
+        </div>
+
+        unreveal.bio
+
+    </div>
+
+    <div class="center">
+        <div class="stage">STAGE 4</div>
+        <h1>Gender Determination Process</h1>
+    </div>
+
+    <div class="progress">4 / 5</div>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="card">
+
+            <h3>MATERI</h3>
+
+            <p>
+                Sel telur dari ibu selalu
+                membawa kromosom X.
+            </p>
+
+            <p>
+                Sperma dari ayah dapat
+                membawa kromosom X atau Y.
+            </p>
+
+            <div class="chromosome-display">
+                <img src="seltelursprm.jpg" width="200px">
+            </div>
+
+        </div>
+
+        <div class="card note">
+
+            <h3>💡 Ingat!</h3>
+
+            <p>
+                X + X = Perempuan (XX)
+            </p>
+
+            <p>
+                X + Y = Laki-laki (XY)
+            </p>
+
+            <p>
+                Peluang 50% laki-laki
+                dan 50% perempuan.
+            </p>
+
+        </div>
+
+        <!-- TOMBOL KEMBALI -->
+        <button class="back-btn" onclick="window.location.href='stage3.html'">
+            ⬅ KEMBALI
+        </button>
+
+    </div>
+
+    <!-- GAME -->
+
+    <div class="game">
+
+        <div class="game-box">
+
+            <div class="game-title">
+                GAME: TEBAK HASIL PEMBUAHAN
+            </div>
+
+            <div class="subtitle">
+                Pilih hasil dari kombinasi di bawah ini!
+            </div>
+
+            <!-- QUESTION 1 -->
+
+            <div class="question">
+
+                <div class="row">
+
+                    <div class="circle pink">X</div>
+
+                    <div class="operator">+</div>
+
+                    <div class="circle blue">X</div>
+
+                    <div class="operator">=</div>
+
+                    <div class="drop-zone" data-answer="girl"></div>
+
+                </div>
+
+                <div class="options-title">
+                    Bayi akan menjadi...
+                </div>
+
+                <div class="options">
+
+                    <div class="option pink-option"
+                        draggable="true"
+                        id="girl">
+                        👧 Perempuan 
+                    </div>
+
+                    <div class="option blue-option"
+                        draggable="true"
+                        id="boy">
+                        👦 Laki-laki 
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- QUESTION 2 -->
+
+            <div class="question">
+
+                <div class="row">
+
+                    <div class="circle pink">X</div>
+
+                    <div class="operator">+</div>
+
+                    <div class="circle green">Y</div>
+
+                    <div class="operator">=</div>
+
+                    <div class="drop-zone" data-answer="boy"></div>
+
+                </div>
+
+                <div class="options-title">
+                    Bayi akan menjadi...
+                </div>
+
+                <div class="options">
+
+                    <div class="option pink-option"
+                        draggable="true"
+                        id="girl2">
+                        👧 Perempuan 
+                    </div>
+
+                    <div class="option blue-option"
+                        draggable="true"
+                        id="boy2">
+                        👦 Laki-laki 
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <div class="button-wrap">
+
+                <button class="check-btn" onclick="checkAnswer()">
+                    CEK JAWABAN
+                </button>
+
+                <!-- MUNCUL JIKA BENAR -->
+                <button class="next-btn" id="nextBtn">
+                    <a href="stage5.html">
+                        SELANJUTNYA ➜
+                    </a>
+                </button>
+
+            </div>
+
+            <div class="result" id="result"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* DRAG */
+
+const options = document.querySelectorAll(".option");
+const zones = document.querySelectorAll(".drop-zone");
+
+options.forEach(option => {
+
+    option.addEventListener("dragstart", e => {
+
+        e.dataTransfer.setData("text", option.id);
+
+    });
+
+});
+
+zones.forEach(zone => {
+
+    zone.addEventListener("dragover", e => {
+
+        e.preventDefault();
+
+    });
+
+    zone.addEventListener("drop", e => {
+
+        e.preventDefault();
+
+        const id = e.dataTransfer.getData("text");
+
+        const dragged = document.getElementById(id);
+
+        // kosongkan dulu supaya bisa ganti jawaban
+        zone.innerHTML = "";
+
+        zone.appendChild(dragged);
+
+    });
+
+});
+
+/* CHECK ANSWER */
+
+function checkAnswer(){
+
+    let correct = true;
+
+    zones.forEach(zone => {
+
+        const answer = zone.dataset.answer;
+
+        if(zone.children.length === 0){
+
+            correct = false;
+            return;
+
+        }
+
+        const droppedId = zone.children[0].id;
+
+        // girl / girl2 dianggap benar
+        if(answer === "girl"){
+
+            if(!droppedId.includes("girl")){
+                correct = false;
+            }
+
+        }
+
+        // boy / boy2 dianggap benar
+        if(answer === "boy"){
+
+            if(!droppedId.includes("boy")){
+                correct = false;
+            }
+
+        }
+
+    });
+
+    const result = document.getElementById("result");
+    const nextBtn = document.getElementById("nextBtn");
+
+    if(correct){
+
+        result.innerHTML = "🎉 Semua jawaban benar!";
+        result.style.color = "#2ea85d";
+
+    correctSound.currentTime = 0;
+    correctSound.play();
+
+        // munculkan tombol lanjut
+        nextBtn.style.display = "inline-block";
+
+    }else{
+
+        result.innerHTML = "❌ Masih ada jawaban yang salah!";
+        result.style.color = "#d14d4d";
+
+    wrongSound.currentTime = 0;
+    wrongSound.play();
+
+        // sembunyikan tombol lanjut
+        nextBtn.style.display = "none";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

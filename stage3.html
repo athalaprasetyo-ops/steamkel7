@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+
+<title>Match XX & XY</title>
+
+
+
+<style>
+
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto Slab', 'Google Sans';
+    }
+
+ body {
+      background-image: url('lumbaungu.jpeg');
+      background-size: cover;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+/* HEADER */
+
+.header{
+    background:#1a0f4d;
+    color:rgb(255, 255, 255);
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:white;
+    font-weight:bold;
+    font-size:22px;
+}
+
+.logo-circle{
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+    background:white;
+
+    color:#79b5e2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.center-title{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.stage{
+    background:#b14cff;
+    padding:7px 15px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.center-title h1{
+    font-size:26px;
+}
+
+.progress{
+    border:2px solid #5b4fa7;
+    padding:8px 16px;
+    border-radius:14px;
+}
+
+/* LAYOUT */
+
+.container{
+    display:flex;
+    gap:20px;
+    padding:20px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:280px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.card{
+    background:white;
+    border:2px solid #d6c8ee;
+    border-radius:18px;
+    padding:18px;
+}
+
+.card h3{
+    color:#9a4bca;
+    margin-bottom:15px;
+}
+
+.card p{
+    line-height:1.6;
+    margin-bottom:14px;
+}
+
+.character{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    font-size:70px;
+    margin-top:15px;
+}
+
+.note{
+    background:#efe4ff;
+}
+
+.back-btn{
+    margin-top:auto;
+    background:white;
+    border:2px solid #b896db;
+    color:#6f379f;
+    padding:14px;
+    border-radius:14px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* GAME */
+
+.game{
+    flex:1;
+    background-image: "lumba.jpg";
+    border:2px solid #d8caef;
+    border-radius:20px;
+    padding:25px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.game-title{
+    font-size:30px;
+    color:#7a3eb0;
+    font-weight:bold;
+}
+
+.subtitle{
+    margin-top:10px;
+    color:#555;
+}
+
+/* DRAG ITEMS */
+
+.cards{
+    display:flex;
+    gap:18px;
+    margin-top:35px;
+}
+
+.drag-card{
+    width:120px;
+    height:150px;
+    border-radius:16px;
+    border:2px dashed #d1c0e7;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:#faf7ff;
+    cursor:grab;
+    user-select:none;
+}
+
+.drag-card .big{
+    font-size:55px;
+    font-weight:bold;
+}
+
+.pink{
+    color:#ef67ad;
+}
+
+.blue{
+    color:#000000;
+}
+
+.label{
+    margin-top:12px;
+    font-size:15px;
+    font-weight:bold;
+}
+
+/* DROP AREA */
+
+.match-area{
+    display:flex;
+    gap:18px;
+    margin-top:40px;
+}
+
+.match-box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+
+.top-card{
+    width:120px;
+    height:150px;
+    border-radius:16px;
+    border:2px solid #d5c6eb;
+    background:#faf7ff;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.drop-zone{
+    width:120px;
+    height:160px;
+    border-radius:14px;
+    border:2px dashed #c6b1e3;
+    background:#f8f2ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:10px;
+}
+
+/* BUTTON */
+
+.check-btn{
+    margin-top:35px;
+    background:#8c45c9;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.check-btn:hover{
+    opacity:0.9;
+}
+
+.result{
+    margin-top:18px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+    padding:0 20px 20px;
+}
+
+.hint-btn{
+    background:white;
+    border:2px solid #bca1dc;
+    color:#6d389f;
+    padding:12px 22px;
+    border-radius:14px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.next-btn{
+    margin-top:18px;
+    background:#53b36c;
+    color:white;
+    border:none;
+    padding:15px 34px;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.2s;
+    display:none;
+}
+
+.next-btn:hover{
+    transform:scale(1.05);
+}
+
+.next-btn a{
+    color:white;
+    text-decoration:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- AUDIO -->
+
+<audio id="correctSound">
+    <source src="yes.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="wrongSound">
+    <source src="no.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            <div style="height: 100%;">
+                <img src="logo.png"
+                alt="Logo unreveal.bio"
+                style="width:100%; border-radius: 50%;">
+            </div>
+        </div>
+
+        unreveal.bio
+
+    </div>
+
+    <div class="center-title">
+        <div class="stage">STAGE 3</div>
+        <h1>XX vs XY Identity Card</h1>
+    </div>
+
+    <div class="progress">3 / 5</div>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="card">
+
+            <h3>MATERI</h3>
+
+            <p>
+                Perempuan memiliki kromosom XX,
+                sedangkan laki-laki memiliki XY.
+            </p>
+
+            <p>
+                Ibu selalu memberikan kromosom X,
+                sedangkan ayah dapat memberikan
+                X atau Y.
+            </p>
+
+            <p>
+                Cocokkan kartu di bawah dengan tepat!
+            </p>
+
+            <div class="character">
+                👩 👨
+            </div>
+
+        </div>
+
+        <div class="card note">
+
+            <h3>💡 INGAT!</h3>
+
+            <p>
+                Ibu = X selalu
+                <br><br>
+                Ayah = X atau Y
+            </p>
+
+        </div>
+
+        <button class="back-btn" onclick="goBack()">
+    ⬅ KEMBALI
+</button>
+
+    </div>
+
+    <!-- GAME -->
+
+    <div class="game">
+
+        <div class="game-title">
+            GAME: MATCH XX & XY
+        </div>
+
+        <div class="subtitle">
+            Tarik kartu ke kotak yang sesuai!
+        </div>
+
+        <!-- DRAG CARDS -->
+
+        <div class="cards">
+
+        
+            <div class="drag-card" draggable="true" id="y">
+                <div class="big blue">Y/X</div>
+            </div>
+
+            <div class="drag-card" draggable="true" id="x">
+                <div class="big blue">X</div>
+            </div>
+            
+            <div class="drag-card" draggable="true" id="xy">
+                <div class="big blue">XY</div>
+            </div>
+
+            <div class="drag-card" draggable="true" id="xx">
+                <div class="big blue">XX</div>
+            </div>
+        </div>
+        <!-- MATCH AREA -->
+
+        <div class="match-area">
+
+            <!-- PEREMPUAN -->
+            <div class="match-box">
+
+                <div class="top-card">
+                    <div style="font-size:60px;">👧</div>
+                    <div class="label">Perempuan</div>
+                </div>
+
+                <div class="drop-zone" data-answer="xx"></div>
+
+            </div>
+
+            <!-- LAKI -->
+            <div class="match-box">
+
+                <div class="top-card">
+                    <div style="font-size:60px;">👦</div>
+                    <div class="label">Laki-laki</div>
+                </div>
+
+                <div class="drop-zone" data-answer="xy"></div>
+
+            </div>
+
+            <!-- IBU -->
+            <div class="match-box">
+
+                <div class="top-card">
+                    <div style="font-size:60px;">👩</div>
+                    <div class="label">Dari Ibu</div>
+                </div>
+
+                <div class="drop-zone" data-answer="x"></div>
+
+            </div>
+
+            <!-- AYAH -->
+            <div class="match-box">
+
+                <div class="top-card">
+                    <div style="font-size:60px;">👨</div>
+                    <div class="label">Dari Ayah</div>
+                </div>
+
+                <div class="drop-zone" data-answer="y"></div>
+
+            </div>
+
+        </div>
+
+        <button class="check-btn" onclick="checkAnswer()">
+            CEK JAWABAN
+        </button>
+<!-- TARUH DI BAWAH BUTTON CEK JAWABAN -->
+<button class="next-btn" id="nextBtn">
+   <a href="stage4.html">LANJUT ➜</a>
+</button>
+        <div class="result" id="result"></div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+
+
+
+<script>
+
+/* DRAG */
+
+const cards = document.querySelectorAll(".drag-card");
+const zones = document.querySelectorAll(".drop-zone");
+
+cards.forEach(card => {
+
+    card.addEventListener("dragstart", e => {
+
+        e.dataTransfer.setData("text", card.id);
+
+    });
+
+});
+
+zones.forEach(zone => {
+
+    zone.addEventListener("dragover", e => {
+
+        e.preventDefault();
+
+    });
+
+    zone.addEventListener("drop", e => {
+
+        e.preventDefault();
+
+        const id = e.dataTransfer.getData("text");
+
+        const dragged = document.getElementById(id);
+
+        // hanya 1 item per box
+        if(zone.children.length === 0){
+
+            zone.appendChild(dragged);
+
+        }
+
+    });
+
+});
+
+/* CHECK ANSWER */
+
+function checkAnswer(){
+
+    let correct = true;
+
+    zones.forEach(zone => {
+
+        const answer = zone.dataset.answer;
+
+        if(zone.children.length === 0){
+
+            correct = false;
+            return;
+
+        }
+
+        const cardId = zone.children[0].id;
+
+        if(cardId !== answer){
+
+            correct = false;
+
+        }
+
+    });
+
+    const result = document.getElementById("result");
+
+    const nextBtn = document.getElementById("nextBtn");
+
+if(correct){
+
+    result.innerHTML = "🎉 Semua jawaban benar!";
+    result.style.color = "#2eaf52";
+
+    correctSound.currentTime = 0;
+    correctSound.play();
+
+
+    // munculkan tombol lanjut
+    nextBtn.style.display = "inline-block";
+
+}else{
+
+    result.innerHTML = "❌ Masih ada yang salah!";
+    result.style.color = "#d63d3d";
+
+    wrongSound.currentTime = 0;
+     wrongSound.play();
+
+    // sembunyikan tombol lanjut
+    nextBtn.style.display = "none";
+
+}
+
+}
+
+function goBack(){
+
+    window.location.href = "stage2.html";
+
+}
+
+</script>
+
+</body>
+</html>

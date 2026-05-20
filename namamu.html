@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+    <title>Siapa Nama Kamu?</title>
+
+    
+    
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Roboto Slab','Google Sans';
+    }
+
+    html,body{
+        height:100%;
+    }
+
+    body{
+        min-height:100vh;
+        display:flex;
+        flex-direction:column;
+        background-image:url('asoy.jpg');
+        background-size:cover;
+        background-position:center;
+        background-repeat:no-repeat;
+    }
+
+    /* WRAPPER */
+    .wrapper{
+        flex:1;
+        display:flex;
+        flex-direction:column;
+    }
+
+    /* NAVBAR */
+    .navbar{
+        height:75px;
+        background-color:#78b9e8;
+        display:flex;
+        align-items:center;
+        padding:0 50px 0 0;
+    }
+
+    .brand{
+        display:flex;
+        align-items:center;
+        gap:15px;
+        margin-right:auto;
+    }
+
+    .logo{
+        width:60px;
+        height:60px;
+        border-radius:50%;
+        object-fit:cover;
+        margin-left:15px;
+    }
+
+    .brand span{
+        font-size:20px;
+        color:black;
+    }
+
+    .login{
+        width:215px;
+        height:46px;
+        background-color:#c6dff5;
+        text-align:center;
+        align-content:center;
+        border-radius:10px;
+        margin:0 10px;
+        font-size:large;
+        text-decoration:none;
+        color:black;
+        font-family:'Roboto Slab', Arial, sans-serif;
+        transition:0.3s;
+    }
+
+    .login:hover{
+        background-color:#86f980;
+    }
+
+    /* MAIN */
+    .main-content{
+        flex:1;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        padding:40px 20px;
+    }
+
+    .container{
+        background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);
+        width:400px;
+        min-height:450px;
+        padding:20px;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        border-radius:20px;
+        align-items:center;
+        box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .container h1{
+        font-size:28px;
+        color:#333;
+        margin-bottom:35px;
+        text-align:center;
+    }
+
+    .box321{
+        margin-left:70px;
+        display:flex;
+        flex-direction:row;
+        gap:10px;
+        width:100%;
+        align-items:center;
+    }
+
+    .box321 input{
+        padding:10px;
+        border-radius:10px;
+        border:1px solid #999;
+        width:180px;
+        font-size:16px;
+    }
+
+    /* BUTTON */
+    .login-btn{
+        width:35%;
+        padding:12px;
+        background-color:#6bafee;
+        color:black;
+        border:none;
+        border-radius:70px;
+        cursor:pointer;
+        font-size:16px;
+        font-weight:bold;
+        margin-top:35px;
+        display:none;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        text-decoration:none;
+        transition:0.3s;
+    }
+
+    .login-btn:hover{
+        background:#86f980;
+        transform:scale(1.05);
+    }
+
+    /* FOOTER */
+    footer{
+        height:60px;
+        background-color:#78b9e8;
+        display:flex;
+        justify-content:flex-end;
+        align-items:center;
+        padding-right:40px;
+        font-size:20px;
+        margin-top:auto;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:500px){
+
+        .container{
+            width:100%;
+            max-width:360px;
+        }
+
+        .box321{
+            margin-left:0;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+
+        .box321 label{
+            width:auto !important;
+        }
+
+        .box321 input{
+            width:100%;
+            max-width:220px;
+        }
+
+        .login{
+            width:150px;
+            font-size:15px;
+        }
+
+    }
+
+    </style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="brand">
+            <img src="logo.png" alt="Logo" class="logo"/>
+            <span>unreveal.bio</span>
+        </div>
+
+        <a href="index.html" class="login">
+            Back Home
+        </a>
+
+    </nav>
+
+    <!-- MAIN -->
+    <div class="main-content">
+
+        <main class="container">
+
+            <img src="logo.png" alt="Logo" class="logo">
+
+            <h1>Siapakah namamu?</h1>
+
+            <div class="box321">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24">
+
+                    <path fill="currentColor"
+                    d="m16.484 11.976l6.151-5.344v10.627zm-7.926.905l2.16 1.875c.339.288.781.462 1.264.462h.017h-.001h.014c.484 0 .926-.175 1.269-.465l-.003.002l2.16-1.875l6.566 5.639H1.995zM1.986 5.365h20.03l-9.621 8.356a.6.6 0 0 1-.38.132h-.014h.001h-.014a.6.6 0 0 1-.381-.133l.001.001zm-.621 1.266l6.15 5.344l-6.15 5.28zm21.6-2.441c-.24-.12-.522-.19-.821-.19H1.859a1.9 1.9 0 0 0-.835.197l.011-.005A1.86 1.86 0 0 0 0 5.855v12.172a1.86 1.86 0 0 0 1.858 1.858h20.283a1.86 1.86 0 0 0 1.858-1.858V5.855c0-.727-.419-1.357-1.029-1.66l-.011-.005z"/>
+                </svg>
+
+                <label for="nama" style="width:90px;">
+                    Namamu:
+                </label>
+
+                <input type="text"
+                    id="nama"
+                    name="nama"
+                    required>
+
+            </div>
+
+            <!-- TOMBOL LANJUT -->
+            <a href="pretest.html"
+                class="login-btn"
+                id="lanjutBtn">
+
+                Lanjut
+
+            </a>
+
+        </main>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        unrevealed.bio
+    </footer>
+
+</div>
+
+<script>
+
+const inputNama = document.getElementById("nama");
+const lanjutBtn = document.getElementById("lanjutBtn");
+
+/* MUNCULKAN TOMBOL JIKA INPUT TERISI */
+
+inputNama.addEventListener("input", function(){
+
+    if(inputNama.value.trim() !== ""){
+
+        lanjutBtn.style.display = "flex";
+
+    }else{
+
+        lanjutBtn.style.display = "none";
+
+    }
+
+});
+
+/* SIMPAN NAMA KE LOCAL STORAGE */
+
+lanjutBtn.addEventListener("click", function(){
+
+    const nama = inputNama.value;
+
+    localStorage.setItem("namaPengguna", nama);
+
+});
+
+</script>
+
+</body>
+</html>

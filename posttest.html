@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Post-Test Unreveal.Bio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Roboto Slab','Google Sans';
+}
+
+body{
+  background-image:url('bgpretest.jpeg');
+  background-size:cover;
+}
+
+/* NAVBAR */
+
+.navbar{
+  height:75px;
+  background-color:#78b9e8;
+  display:flex;
+  align-items:center;
+  padding:0 50px 0 0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  margin-right:900px;
+}
+
+.logo{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:cover;
+  margin-left:15px;
+}
+
+.brand span{
+  font-size:20px;
+  color:black;
+}
+
+.navbar svg{
+  margin-left:20px;
+  fill:black;
+  width:50px;
+  height:50px;
+}
+
+/* QUIZ BOX */
+
+.quiz-box{
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  max-width:700px;
+  margin:auto;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  margin-top:80px;
+}
+
+.quiz-box h1{
+  margin-bottom:20px;
+  text-align:center;
+}
+
+.question{
+  margin-bottom:25px;
+}
+
+.question p{
+  margin-bottom:10px;
+  font-size:18px;
+}
+
+/* OPTIONS */
+
+.options{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.options label{
+  background:#eef6fd;
+  padding:12px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.options label:hover{
+  background:#dcefff;
+}
+
+.options input{
+  margin-right:10px;
+}
+
+/* BUTTON */
+
+button{
+  padding:10px 20px;
+  border:none;
+  background:rgb(2,79,105);
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+button:hover{
+  opacity:0.9;
+}
+
+.submit-wrap{
+  text-align:center;
+  margin-top:20px;
+}
+
+/* STAGE BUTTON */
+
+.stage-box{
+  background-color:#0a457c;
+  width:400px;
+  height:50px;
+  border-radius:20px;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  margin:30px auto;
+  text-align:center;
+  font-size:18px;
+}
+
+.stage-box a{
+  color:#ffffff;
+  text-decoration:none;
+  font-weight:bold;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+  <div class="brand">
+    <img src="logo.png" alt="Logo" class="logo" />
+    <span>unreveal.bio</span>
+  </div>
+
+  <p>Hello, <span id="userName"></span>!</p>
+
+  <a href="index.html">
+
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="24"
+         height="24"
+         viewBox="0 0 24 24">
+
+      <path fill="currentColor"
+      d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 .45 1-1"/>
+    </svg>
+
+  </a>
+
+</nav>
+
+<!-- QUIZ -->
+
+<div class="quiz-box">
+
+  <h1>Post-Test</h1>
+
+  <form id="quizForm">
+
+    <!-- SOAL 1 -->
+
+    <div class="question">
+      <p>1. Kromosom siapa yang menentukan jenis kelamin bayi?</p>
+
+      <div class="options">
+
+        <label>
+          <input type="radio" name="q1" value="A">
+          A. Ibu
+        </label>
+
+        <label>
+          <input type="radio" name="q1" value="B">
+          B. Ayah
+        </label>
+
+      </div>
+    </div>
+
+    <!-- SOAL 2 -->
+
+    <div class="question">
+      <p>2. Simbol kromosom perempuan adalah ...</p>
+
+      <div class="options">
+
+        <label>
+          <input type="radio" name="q2" value="A">
+          A. XY
+        </label>
+
+        <label>
+          <input type="radio" name="q2" value="B">
+          B. XX
+        </label>
+
+      </div>
+    </div>
+
+    <!-- SOAL 3 -->
+
+    <div class="question">
+      <p>3. Total jumlah kromosom manusia pada setiap sel tubuh adalah ...</p>
+
+      <div class="options">
+
+        <label>
+          <input type="radio" name="q3" value="A">
+          A. 23
+        </label>
+
+        <label>
+          <input type="radio" name="q3" value="B">
+          B. 46
+        </label>
+
+      </div>
+    </div>
+
+    <!-- SOAL 4 -->
+
+    <div class="question">
+      <p>4. Perempuan memiliki susunan kromosom seks ...</p>
+
+      <div class="options">
+
+        <label>
+          <input type="radio" name="q4" value="A">
+          A. XY
+        </label>
+
+        <label>
+          <input type="radio" name="q4" value="B">
+          B. YY
+        </label>
+
+        <label>
+          <input type="radio" name="q4" value="C">
+          C. XX
+        </label>
+
+        <label>
+          <input type="radio" name="q4" value="D">
+          D. XO
+        </label>
+
+      </div>
+    </div>
+
+    <!-- SOAL 5 -->
+
+    <div class="question">
+      <p>5. Di dalam sel, kromosom berada pada bagian ...</p>
+
+      <div class="options">
+
+        <label>
+          <input type="radio" name="q5" value="A">
+          A. Membran Sel
+        </label>
+
+        <label>
+          <input type="radio" name="q5" value="B">
+          B. Inti Sel
+        </label>
+
+        <label>
+          <input type="radio" name="q5" value="C">
+          C. Sitoplasma
+        </label>
+
+        <label>
+          <input type="radio" name="q5" value="D">
+          D. Dinding Sel
+        </label>
+
+      </div>
+    </div>
+
+    <!-- SOAL 6 -->
+
+    <div class="question">
+      <p>6. Down syndrome terjadi karena ...</p>
+
+      <div class="options">
+
+        <label>
+          <input type="radio" name="q6" value="A">
+          A. Kehilangan kromosom X
+        </label>
+
+        <label>
+          <input type="radio" name="q6" value="B">
+          B. Kelebihan kromosom 21
+        </label>
+
+        <label>
+          <input type="radio" name="q6" value="C">
+          C. Kekurangan kromosom Y
+        </label>
+
+        <label>
+          <input type="radio" name="q6" value="D">
+          D. Kromosom XY
+        </label>
+
+      </div>
+    </div>
+
+    <!-- SOAL 7 -->
+
+    <div class="question">
+      <p>7. Kromosom yang dimiliki laki-laki adalah ...</p>
+
+      <div class="options">
+
+        <label>
+          <input type="radio" name="q7" value="A">
+          A. XX
+        </label>
+
+        <label>
+          <input type="radio" name="q7" value="B">
+          B. XY
+        </label>
+
+        <label>
+          <input type="radio" name="q7" value="C">
+          C. XO
+        </label>
+
+        <label>
+          <input type="radio" name="q7" value="D">
+          D. YY
+        </label>
+
+      </div>
+    </div>
+
+    <!-- SOAL 8 -->
+
+    <div class="question">
+      <p>8. DNA berfungsi untuk ...</p>
+
+      <div class="options">
+
+        <label>
+          <input type="radio" name="q8" value="A">
+          A. Menghasilkan energi
+        </label>
+
+        <label>
+          <input type="radio" name="q8" value="B">
+          B. Mengatur pernapasan
+        </label>
+
+        <label>
+          <input type="radio" name="q8" value="C">
+          C. Membawa informasi genetik
+        </label>
+
+        <label>
+          <input type="radio" name="q8" value="D">
+          D. Mengedarkan darah
+        </label>
+
+      </div>
+    </div>
+
+    <!-- SOAL 9 -->
+
+    <div class="question">
+      <p>9. Sel telur selalu membawa kromosom ...</p>
+
+      <div class="options">
+
+        <label>
+          <input type="radio" name="q9" value="A">
+          A. X
+        </label>
+
+        <label>
+          <input type="radio" name="q9" value="B">
+          B. Y
+        </label>
+
+        <label>
+          <input type="radio" name="q9" value="C">
+          C. XX
+        </label>
+
+        <label>
+          <input type="radio" name="q9" value="D">
+          D. XY
+        </label>
+
+      </div>
+    </div>
+
+    <!-- SOAL 10 -->
+
+    <div class="question">
+      <p>10. Jika kromosom sel telur X bertemu sperma Y, maka anak akan berjenis kelamin ...</p>
+
+      <div class="options">
+
+        <label>
+          <input type="radio" name="q10" value="A">
+          A. Perempuan
+        </label>
+
+        <label>
+          <input type="radio" name="q10" value="B">
+          B. XX
+        </label>
+
+        <label>
+          <input type="radio" name="q10" value="C">
+          C. XO
+        </label>
+
+        <label>
+          <input type="radio" name="q10" value="D">
+          D. Laki-laki
+        </label>
+
+      </div>
+    </div>
+
+    <!-- BUTTON -->
+
+    <div class="submit-wrap">
+
+      <button type="button" onclick="cekJawaban()">
+        Submit
+      </button>
+
+    </div>
+
+  </form>
+
+</div>
+
+<!-- BUTTON STAGE -->
+
+<div class="stage-box" id="stageButton">
+
+  <a href="index.html">
+    Kembali ke beranda
+  </a>
+
+</div>
+
+<script>
+
+function cekJawaban(){
+
+  let benar = 0;
+
+  // JAWABAN BENAR
+
+  const jawabanBenar = {
+    q1: "B",
+    q2: "B",
+    q3: "B",
+    q4: "C",
+    q5: "B",
+    q6: "B",
+    q7: "B",
+    q8: "C",
+    q9: "A",
+    q10: "D"
+  };
+
+  // CEK SEMUA SOAL
+
+  for(let key in jawabanBenar){
+
+    const jawaban =
+      document.querySelector(
+        `input[name="${key}"]:checked`
+      );
+
+    if(
+      jawaban &&
+      jawaban.value === jawabanBenar[key]
+    ){
+      benar++;
+    }
+
+  }
+
+  // ALERT HASIL
+
+  alert(
+    "Jawaban benar kamu: " +
+    benar +
+    " dari 10 soal!"
+  );
+
+  // MUNCULKAN BUTTON STAGE
+
+  if(benar >= 0){
+
+    document.getElementById("stageButton")
+      .style.display = "flex";
+
+  }
+
+}
+
+// AMBIL NAMA USER
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  const namaPengguna =
+    localStorage.getItem('namaPengguna');
+
+  if (namaPengguna) {
+
+    document.getElementById('userName')
+      .textContent = namaPengguna;
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>

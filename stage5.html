@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+<title>Stage 5 - Chromosome Facts</title>
+
+<style>
+
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto Slab', 'Google Sans';
+    }
+
+body{
+    background:#eef7fb;
+    min-height:100vh;
+    color:#24435d;
+}
+
+/* HEADER */
+
+.header{
+    background:#102f57;
+    color:white;
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:white;
+    font-weight:bold;
+    font-size:22px;
+}
+
+.logo-circle{
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+    background:white;
+
+    color:#79b5e2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.center{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.stage{
+    background:#49b7c4;
+    padding:7px 15px;
+    border-radius:20px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.center h1{
+    font-size:28px;
+}
+
+.progress{
+    border:2px solid #68bcc7;
+    padding:8px 16px;
+    border-radius:14px;
+}
+
+/* LAYOUT */
+
+.container{
+    display:flex;
+    gap:20px;
+    padding:20px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:320px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.card{
+    background:white;
+    border:2px solid #d1e4ea;
+    border-radius:18px;
+    padding:20px;
+}
+
+.card h3{
+    color:#3f8f99;
+    margin-bottom:15px;
+}
+
+.card p{
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.card ul{
+    margin-left:18px;
+    line-height:1.8;
+}
+
+.fact{
+    background:#def6f8;
+}
+
+.back-btn{
+    margin-top:auto;
+    background:white;
+    border:2px solid #99cfd5;
+    color:#34717a;
+    padding:14px;
+    border-radius:14px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.back-btn:hover{
+    background:#dff4f7;
+}
+
+/* MAIN CONTENT */
+
+.main{
+    flex:1;
+    background:white;
+    border:2px solid #d5e6eb;
+    border-radius:22px;
+    padding:30px;
+}
+
+.main-title{
+    text-align:center;
+    color:#3d8792;
+    font-size:32px;
+    font-weight:bold;
+}
+
+.subtitle{
+    text-align:center;
+    margin-top:10px;
+    margin-bottom:35px;
+}
+
+/* QUESTIONS */
+
+.question-box{
+    border:2px solid #d8e8ec;
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:25px;
+    background:#fbfeff;
+}
+
+.question-number{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:#56b4bf;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.question-text{
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+/* OPTIONS */
+
+.options{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.option{
+    background:#eef8fa;
+    border:2px solid transparent;
+    border-radius:14px;
+    padding:14px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.option:hover{
+    background:#dff4f7;
+}
+
+.option.selected{
+    border-color:#56b4bf;
+    background:#d8f0f4;
+}
+
+/* BUTTON */
+
+.button-wrap{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-top:35px;
+}
+
+.check-btn{
+    background:#4daab4;
+    color:white;
+    border:none;
+    padding:16px 35px;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.check-btn:hover{
+    opacity:0.9;
+}
+
+.next-btn{
+    display:none;
+    background:#57b96d;
+    color:white;
+    border:none;
+    padding:16px 35px;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.next-btn:hover{
+    transform:scale(1.05);
+}
+
+.next-btn a{
+    color:white;
+    text-decoration:none;
+}
+
+.result{
+    text-align:center;
+    margin-top:20px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="correctSound">
+    <source src="yes.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="wrongSound">
+    <source src="no.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            <div style="height: 100%;">
+                <img src="logo.png"
+                alt="Logo unreveal.bio"
+                style="width:100%; border-radius: 50%;">
+            </div>
+        </div>
+
+        unreveal.bio
+
+    </div>
+
+    <div class="center">
+        <div class="stage">STAGE 5</div>
+        <h1>Chromosome Facts & Disorders</h1>
+    </div>
+
+    <div class="progress">5 / 5</div>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="card">
+
+            <h3>MATERI</h3>
+
+            <p>
+                Kromosom Y berukuran lebih kecil
+                dan memiliki lebih sedikit gen
+                dibanding kromosom X.
+            </p>
+
+            <p>
+                Kromosom X berperan dalam
+                pertumbuhan tubuh, sedangkan
+                kromosom Y menentukan jenis
+                kelamin laki-laki.
+            </p>
+
+        </div>
+
+        <div class="card fact">
+
+            <h3>🧪 Kelainan Kromosom</h3>
+
+            <ul>
+                <li>
+                    <b>Down syndrome</b>:
+                    kelebihan kromosom 21
+                </li>
+
+                <li>
+                    <b>Turner syndrome</b>:
+                    kehilangan kromosom X (XO)
+                </li>
+
+                <li>
+                    <b>Klinefelter syndrome</b>:
+                    kromosom XXY
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- TOMBOL KEMBALI -->
+        <button class="back-btn"
+            onclick="window.location.href='stage4.html'">
+            ⬅ KEMBALI
+        </button>
+
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+        <div class="main-title">
+            QUIZ TIME!
+        </div>
+
+        <div class="subtitle">
+            Pilih jawaban yang paling tepat!
+        </div>
+
+        <!-- QUESTION 1 -->
+
+        <div class="question-box">
+
+            <div class="question-number">1</div>
+
+            <div class="question-text">
+                Apa fungsi utama kromosom Y?
+            </div>
+
+            <div class="options">
+
+                <div class="option"
+                    onclick="selectOption(this, 'q1')"
+                    data-correct="false">
+                    a. Mengatur warna mata
+                </div>
+
+                <div class="option"
+                    onclick="selectOption(this, 'q1')"
+                    data-correct="true">
+                    b. Menentukan jenis kelamin laki-laki
+                </div>
+
+                <div class="option"
+                    onclick="selectOption(this, 'q1')"
+                    data-correct="false">
+                    c. Mengatur pertumbuhan tulang
+                </div>
+
+                <div class="option"
+                    onclick="selectOption(this, 'q1')"
+                    data-correct="false">
+                    d. Menentukan golongan darah
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- QUESTION 2 -->
+
+        <div class="question-box">
+
+            <div class="question-number">2</div>
+
+            <div class="question-text">
+                Down syndrome terjadi karena ...
+            </div>
+
+            <div class="options">
+
+                <div class="option"
+                    onclick="selectOption(this, 'q2')"
+                    data-correct="false">
+                    a. Kehilangan kromosom X
+                </div>
+
+                <div class="option"
+                    onclick="selectOption(this, 'q2')"
+                    data-correct="true">
+                    b. Kelebihan kromosom 21
+                </div>
+
+                <div class="option"
+                    onclick="selectOption(this, 'q2')"
+                    data-correct="false">
+                    c. Kromosom tambahan Y
+                </div>
+
+                <div class="option"
+                    onclick="selectOption(this, 'q2')"
+                    data-correct="false">
+                    d. Kekurangan kromosom 21
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- QUESTION 3 -->
+
+        <div class="question-box">
+
+            <div class="question-number">3</div>
+
+            <div class="question-text">
+                Klinefelter syndrome terjadi pada
+                laki-laki dengan susunan kromosom ...
+            </div>
+
+            <div class="options">
+
+                <div class="option"
+                    onclick="selectOption(this, 'q3')"
+                    data-correct="false">
+                    a. XO
+                </div>
+
+                <div class="option"
+                    onclick="selectOption(this, 'q3')"
+                    data-correct="false">
+                    b. XX
+                </div>
+
+                <div class="option"
+                    onclick="selectOption(this, 'q3')"
+                    data-correct="true">
+                    c. XXY
+                </div>
+
+                <div class="option"
+                    onclick="selectOption(this, 'q3')"
+                    data-correct="false">
+                    d. XY
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <div class="button-wrap">
+
+            <button class="check-btn"
+                onclick="checkAnswers()">
+                CEK JAWABAN
+            </button>
+
+            <!-- MUNCUL JIKA SEMUA BENAR -->
+            <button class="next-btn" id="nextBtn">
+                <a href="posttest.html">
+                    LANJUT POST-TEST ➜
+                </a>
+            </button>
+
+        </div>
+
+        <div class="result" id="result"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+function selectOption(element, question){
+
+    const parent =
+        element.parentElement;
+
+    const allOptions =
+        parent.querySelectorAll(".option");
+
+    allOptions.forEach(opt => {
+
+        opt.classList.remove("selected");
+
+    });
+
+    element.classList.add("selected");
+
+}
+
+function checkAnswers(){
+
+    const questionBoxes =
+        document.querySelectorAll(".question-box");
+
+    let score = 0;
+
+    questionBoxes.forEach(box => {
+
+        const selected =
+            box.querySelector(".option.selected");
+
+        if(selected &&
+            selected.dataset.correct === "true"){
+
+            score++;
+
+        }
+
+    });
+
+    const result =
+        document.getElementById("result");
+
+    const nextBtn =
+        document.getElementById("nextBtn");
+
+    if(score === 3){
+
+        result.innerHTML =
+            "🎉 Semua jawaban benar!";
+
+    correctSound.currentTime = 0;
+    correctSound.play();
+
+        result.style.color = "#2ea85d";
+
+        // munculkan tombol lanjut
+        nextBtn.style.display = "inline-block";
+
+    }else{
+
+        result.innerHTML =
+            `❌ Jawaban benar kamu ${score} dari 3 soal`;
+
+    wrongSound.currentTime = 0;
+    wrongSound.play();
+
+        result.style.color = "#d14d4d";
+
+        // sembunyikan tombol lanjut
+        nextBtn.style.display = "none";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto Slab', 'Google Sans';
+    }
+
+    body {
+      background-image: url('bglogin.jpeg');
+      background-size: cover;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      
+    }
+/* NAVBAR */
+    .navbar {
+      height: 75px;
+      background-color: #78b9e8;
+      display: flex;
+      align-items: center;
+      padding: 0 50px 0 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-right: 900px;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-left: 15px;
+    }
+
+    .brand span {
+      font-size: 20px;
+      color: black;
+    }
+
+    .login {
+      width: 215px;
+      height: 46px;
+      background-color: #c6dff5;
+      text-align: center;
+      align-content: center;
+      border-radius: 10px;
+      margin: 0 10px;
+      font-size: large;
+      text-decoration: none;
+      color: black;
+      font-family: 'Roboto Slab', Arial, sans-serif;
+    }
+    .login:hover {
+      background-color: #86f980;
+      transition-duration: 1000ms;
+      /* color: white; */
+
+    }
+    .container{
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        width: 400px;
+        height: 450px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 20px;
+        justify-content: start;
+        align-items: center;
+        margin-top: 70px;
+        justify-self: center;
+        margin-bottom: 50px;
+    }
+
+    .container h1{
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 35px;
+        text-align: center;
+    }
+
+    .box123{
+        margin-left: 150px;
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        width: 100%;
+    }
+    .box321{
+      margin-left: 150px;
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .login-btn{
+        width: 35%;
+        padding: 10px;
+        background-color: #6bafee;
+        color: rgb(0, 0, 0);
+        border: none;
+        border-radius: 70px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 25px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .register-btn{
+        width: 35%;
+        padding: 10px;
+        background-color: #99a3ac;
+        color: rgb(0, 0, 0);
+        border: none;
+        border-radius: 70px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+     
+
+    footer {
+      height: 90px;
+      background-color: #78b9e8;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-right: 40px;
+      font-size: 20px; }
+    </style>
+</head>
+<body>
+      <nav class="navbar">
+        <div class="brand">
+        <img src="logo.png" alt="Logo" class="logo" />
+        <span>unreveal.bio</span>
+        </div>
+
+        <a href="index.html" class="login">Back Home</a>
+    </nav>
+
+    <main class="container">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>Login ke akun Unreveal.Bio Anda terlebih dahulu</h1>
+        <div class="box321">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m16.484 11.976l6.151-5.344v10.627zm-7.926.905l2.16 1.875c.339.288.781.462 1.264.462h.017h-.001h.014c.484 0 .926-.175 1.269-.465l-.003.002l2.16-1.875l6.566 5.639H1.995zM1.986 5.365h20.03l-9.621 8.356a.6.6 0 0 1-.38.132h-.014h.001h-.014a.6.6 0 0 1-.381-.133l.001.001zm-.621 1.266l6.15 5.344l-6.15 5.28zm21.6-2.441c-.24-.12-.522-.19-.821-.19H1.859a1.9 1.9 0 0 0-.835.197l.011-.005A1.86 1.86 0 0 0 0 5.855v12.172a1.86 1.86 0 0 0 1.858 1.858h20.283a1.86 1.86 0 0 0 1.858-1.858V5.855c0-.727-.419-1.357-1.029-1.66l-.011-.005z"/></svg>
+            <labelfor="email" style="width: 90px;">Email:</labelfor>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="box123">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M7 7c0-2.762 2.238-5 5-5s5 2.238 5 5v3h.4c.88 0 1.6.72 1.6 1.6v7c0 1.32-1.08 2.4-2.4 2.4H7.4C6.08 21 5 19.92 5 18.6v-7c0-.88.72-1.6 1.6-1.6H7zm8 0v3H9V7c0-1.658 1.342-3 3-3s3 1.342 3 3m-3 5.25a1.75 1.75 0 0 0-.75 3.332V18a.75.75 0 0 0 1.5 0v-2.418A1.75 1.75 0 0 0 12 12.25" clip-rule="evenodd"/></svg>
+            <labelfor="password" style="width: 90px;">Password:</labelfor>
+            <input type="password" id="password" name="password" required> </br>
+        </div>
+        <a href="pretest.html" class="login-btn" type="submit">Login</a>
+        <button class="register-btn" type="button">Register</button>
+
+    </main>
+    <footer>
+     unrevealed.bio
+    </footer>
+
+</body>
+</html>

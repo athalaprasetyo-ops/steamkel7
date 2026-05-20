@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&family=Roboto+Slab:wght@300;700&display=swap" rel="stylesheet">
+
+<title>Asal Usul Gen XX dan XY</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Roboto Slab','Google Sans',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f4f6f8;
+    overflow-x:hidden;
+    color:#222;
+}
+
+/* BACKGROUND */
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+
+    background:
+    linear-gradient(
+        rgba(255,255,255,0.75),
+        rgba(255,255,255,0.75)
+    ),
+
+    url('https://images.unsplash.com/photo-1532187643603-ba119ca4109e?q=80&w=1200&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+}
+
+/* FLOATING BLUR */
+.blur1,
+.blur2{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(90px);
+    z-index:-2;
+    opacity:0.4;
+}
+
+.blur1{
+    width:250px;
+    height:250px;
+    background:#7ec0ee;
+    top:120px;
+    left:-60px;
+}
+
+.blur2{
+    width:300px;
+    height:300px;
+    background:#86f980;
+    bottom:-80px;
+    right:-50px;
+}
+
+/* NAVBAR */
+.topbar{
+    width:100%;
+    height:75px;
+
+    background:rgba(121,181,226,0.92);
+    backdrop-filter:blur(10px);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 30px;
+
+    position:sticky;
+    top:0;
+    z-index:999;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:white;
+    font-weight:bold;
+    font-size:22px;
+}
+
+.logo-circle{
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+    background:white;
+
+    color:#79b5e2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+    font-weight:bold;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* NAV BUTTONS */
+.nav-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.nav-btn{
+    background:#d7e8f5;
+    padding:10px 20px;
+    border-radius:12px;
+
+    text-decoration:none;
+    color:black;
+
+    font-weight:600;
+
+    transition:0.3s;
+}
+
+.nav-btn:hover{
+    background:#86f980;
+    transform:translateY(-3px);
+}
+
+/* MAIN CONTAINER */
+.container{
+    width:85%;
+    max-width:950px;
+
+    margin:70px auto;
+
+    background:rgba(223,230,238,0.92);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:35px;
+
+    position:relative;
+
+    padding:90px 45px 80px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 35px rgba(0,0,0,0.12);
+
+    animation:fadeUp 1s ease;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* TITLE BOX */
+.title-box{
+    width:100%;
+    max-width:760px;
+
+    margin:0 auto 45px;
+
+    background:linear-gradient(
+        135deg,
+        #84c6ea,
+        #9ee8ff
+    );
+
+    border-radius:30px;
+
+    padding:25px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    color:#1c1c1c;
+
+    font-size:30px;
+    font-weight:bold;
+
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* IMAGE */
+.image-box{
+    width:100%;
+    display:flex;
+    justify-content:center;
+
+    margin-bottom:50px;
+}
+
+.image-box img{
+    width:100%;
+    max-width:500px;
+
+    border-radius:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+
+    transition:0.4s;
+}
+
+.image-box img:hover{
+    transform:scale(1.03);
+}
+
+/* TEXT */
+.text-content{
+    margin-top:20px;
+
+    line-height:2;
+
+    font-size:18px;
+
+    text-align:justify;
+
+    padding:0 10px;
+}
+
+.text-content p{
+    margin-bottom:30px;
+}
+
+/* DECORATIONS */
+.dna{
+    position:absolute;
+
+    left:-20px;
+    top:120px;
+
+    width:240px;
+
+    opacity:0.15;
+
+    animation:float 5s ease-in-out infinite;
+}
+
+.chromosome-top{
+    position:absolute;
+
+    top:10px;
+    right:40px;
+
+    width:90px;
+
+    opacity:0.2;
+
+    animation:float 6s ease-in-out infinite;
+}
+
+.chromosome-bottom{
+    position:absolute;
+
+    left:40px;
+    bottom:20px;
+
+    width:120px;
+
+    opacity:0.2;
+
+    transform:rotate(20deg);
+
+    animation:float 7s ease-in-out infinite;
+}
+
+/* FLOAT */
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* FOOTER */
+.footer{
+    width:100%;
+    height:45px;
+
+    background:#79b5e2;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+    font-weight:bold;
+
+    margin-top:50px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    .topbar{
+        padding:0 15px;
+    }
+
+    .logo{
+        font-size:18px;
+    }
+
+    .logo-circle{
+        width:42px;
+        height:42px;
+        font-size:18px;
+    }
+
+    .nav-btn{
+        padding:8px 14px;
+        font-size:14px;
+    }
+
+    .container{
+        width:92%;
+        padding:70px 20px 60px;
+    }
+
+    .title-box{
+        font-size:22px;
+        padding:20px;
+    }
+
+    .text-content{
+        font-size:16px;
+        line-height:1.9;
+    }
+
+    .dna{
+        width:150px;
+    }
+
+    .chromosome-top{
+        width:60px;
+    }
+
+    .chromosome-bottom{
+        width:80px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="background"></div>
+
+<div class="blur1"></div>
+<div class="blur2"></div>
+
+<div class="topbar">
+
+    <div class="logo">
+
+        <div class="logo-circle">
+            <div style="height: 100%;">
+                <img src="logo.png"
+                alt="Logo unreveal.bio"
+                style="width:100%; border-radius: 50%;">
+            </div>
+        </div>
+
+        unreveal.bio
+
+    </div>
+
+    <div class="nav-buttons">
+
+        <a href="index.html" class="nav-btn">
+            Back Home
+        </a>
+
+        <a href="#" class="nav-btn">
+            Materi
+        </a>
+
+    </div>
+
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <!-- DECORATIONS -->
+    <img class="dna"
+    src="https://pngimg.com/d/dna_PNG48.png"
+    alt="DNA">
+
+    <img class="chromosome-top"
+    src="https://cdn-icons-png.flaticon.com/512/616/616554.png"
+    alt="Chromosome">
+
+    <img class="chromosome-bottom"
+    src="https://cdn-icons-png.flaticon.com/512/616/616554.png"
+    alt="Chromosome">
+
+    <!-- TITLE -->
+    <div class="title-box">
+        ASAL USUL GEN XX DAN XY PADA MANUSIA
+    </div>
+
+    <!-- IMAGE -->
+    <div class="image-box">
+
+        <img src="kromosoms.jpg"
+        alt="Ilustrasi kromosom XX dan XY">
+
+    </div>
+
+    <!-- TEXT -->
+    <div class="text-content">
+
+        <p>
+            Kromosom seks diwariskan dari kedua orang tua kepada anak.
+            Ibu memiliki kromosom XX sehingga sel telur yang dihasilkan
+            hanya membawa kromosom X. Ayah memiliki kromosom XY sehingga
+            sperma yang dihasilkan dapat membawa kromosom X atau Y.
+        </p>
+
+        <p>
+            Saat proses pembuahan berlangsung, kromosom dari ayah dan ibu
+            akan bergabung membentuk pasangan kromosom baru pada anak.
+            Jika kromosom X dari ibu bertemu kromosom X dari ayah, maka
+            terbentuk XX yang berarti perempuan. Jika kromosom X dari ibu
+            bertemu kromosom Y dari ayah, maka terbentuk XY yang berarti
+            laki-laki.
+        </p>
+
+        <p>
+            Kromosom tidak hanya menentukan jenis kelamin, tetapi juga
+            membawa berbagai informasi genetik lain yang memengaruhi sifat
+            dan karakteristik tubuh manusia.
+        </p>
+
+        <p>
+            Singkatnya, homolog berarti sama dalam struktur dan isi gen,
+            sedangkan heterolog berarti berbeda. Dalam konteks penentuan
+            jenis kelamin manusia, pasangan XX adalah homolog dan pasangan
+            XY adalah heterolog.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    unreveal.bio © 2026
+</div>
+
+</body>
+</html>
